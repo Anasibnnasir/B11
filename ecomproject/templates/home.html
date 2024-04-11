@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block comment %}
+
+{% if category %}
+<div>
+    <div>
+        <p class="text-center"> <a href="{% url 'home' %}">Our Categories</a> </p>
+
+    </div>
+</div>
+
+{% endif %}
+<div>
+{% if category %}
+<img src="{{category.image.url}}" style="width:1500px; height:600px;">
+</div>
+
+<br>
+<div>
+    <h1>{{category.name}}</h1>
+    <p>{{category.description}}</p>
+</div>
+
+{% else %}
+
+<div class="image-container" style="width:100%">
+    <img src="{% static 'images/background.jpg' %}" alt="Wallpaper_image" style="width:100%; height:500px">
+    <div class="image-text">
+       <h1>Your transfromation Starts Here......!</h1>
+    </div>
+
+</div>
+    <style>
+        .image-container {
+            position: relative;
+            display: inline-block; /* Ensures the container only takes as much width as the image */
+        }
+
+        .image-text {
+            position: absolute;
+            top: 100px; /* Adjust as needed, this places the text 10px from the bottom */
+            left: 600px;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 18px; /* Adjust as needed */
+            text-align: left;
+        }
+    </style>
+<div>
+<h1 style="text-align:center; color:#1877f2; font-size:100px;">Our Products</h1>
+<p style="font-family: 'Arial', sans-serif; text-align: justify; font-size:30px; text-indent: 100px;">Unleash the power of innovation on your wrist with the QuantumX Elite Smartwatch, a pinnacle of craftsmanship and cutting-edge technology. This extraordinary timepiece seamlessly blends style, functionality, and intelligence to elevate your daily experiences.
+
+Key Features:
+
+Precision Engineering:
+Immerse yourself in the world of unparalleled precision. The QuantumX Elite boasts a meticulously crafted stainless steel case, seamlessly integrated with a scratch-resistant sapphire crystal display. Every detail reflects our commitment to exceptional quality.
+
+Intelligent Display:
+Marvel at the vibrant 1.5-inch AMOLED display that adapts to your environment, providing crystal-clear visibility even under direct sunlight. Navigate through a myriad of watch faces and customize your display to suit your mood and style.
+
+Advanced Health Monitoring:
+Your well-being is our priority. The QuantumX Elite goes beyond traditional fitness tracking, offering real-time health insights. Monitor your heart rate, sleep patterns, and stress levels effortlessly, ensuring you stay in tune with your body.<br>
+
+</p>
+</div>
+{% endif %}
+<div class="container" style="margin-left:30px; margin-right:none;">
+    <div class="row">
+    {% for product in products %}
+        <div class="col-6 col-sm-8 col-md-3">
+    <div class="card" style="width: 15rem;">
+  <a href="{{product.get_url}}"><img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" style="width:15rem; height:200px;"></a>
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">{{product.price}}</p>
+    <a href="#" class="btn btn-primary">Add</a>
+  </div>
+</div>
+        </div>
+    {% endfor %}
+
+</div>
+    </div>
+{% endblock %}
+
+
+</body>
+</html>

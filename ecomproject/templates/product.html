@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block comment %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div style="min-width:18rem;">
+                <img src="{{product.image.url}}" alt="{{product.name}}">
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <div>
+                    <h1>{{product.name}}</h1>
+                    <p>RS{{product.price}}</p>
+                    <p>{{product.description}}</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
